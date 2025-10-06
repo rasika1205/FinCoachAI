@@ -66,7 +66,7 @@ def login():
 def signup():
     data = request.get_json()
 
-    # Extract all user info from request
+    
     email = data.get("email")
     password = data.get("password")
     job = data.get("job", {
@@ -86,14 +86,14 @@ def signup():
     if not email or not password:
         return jsonify({"error": "Missing email or password"}), 400
 
-    # Check if user already exists
+    
     if users_collection.find_one({"email": email}):
         return jsonify({"error": "User already exists"}), 400
 
-    # Hash the password
+    
     hashed_pw = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
-    # Build user document
+    
     new_user = {
         "email": email,
         "password_hash": hashed_pw,
@@ -108,7 +108,7 @@ def signup():
         "quests_progress": quests
     }
 
-    # Insert into DB
+    
     users_collection.insert_one(new_user)
 
     return jsonify({"message": "User created successfully"}), 201

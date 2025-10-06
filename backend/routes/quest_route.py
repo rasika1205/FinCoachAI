@@ -24,7 +24,7 @@ def get_quests():
     user_email = request.args.get("email")
     user = users_collection.find_one({"email": user_email})
 
-    all_quests = list(quests_collection.find({}))  # All quests
+    all_quests = list(quests_collection.find({}))  
     available_quests = []
     completed_quests = []
 
@@ -62,7 +62,7 @@ def get_quests():
         "user_badges" : user.get("quests", {}).get("badges", []),
         "available_quests": available_quests,
         "completed_quests": completed_quests,
-        "leaderboard": []  # Can be implemented separately
+        "leaderboard": []
     })
 
 @quest_bp.route("/update/quests/<int:quest_id>/claim", methods=["POST"])
@@ -88,7 +88,7 @@ def claim_quest(quest_id):
         progress_entry["completed_date"] = datetime.now().isoformat()
         user["quests"]["points"] += quest["points"]
 
-        # Optionally, assign badges
+        
         badge = {
             "name": quest["title"],
             "description": quest["description"],
@@ -105,13 +105,11 @@ def claim_quest(quest_id):
 
 @quest_bp.route("/quests/leaderboard", methods=["GET"])
 def get_leaderboard():
-    # 1 Fetch all users with their email and quest points
+    
     users = list(users_collection.find({}, {"email": 1, "quests.points": 1}))
-
-    # 2️ Sort users by points descending
+    
     users_sorted = sorted(users, key=lambda x: x.get("quests", {}).get("points", 0), reverse=True)
-
-    # 3️ Generate leaderboard entries
+    
     leaderboard = []
     for idx, user in enumerate(users_sorted):
         points = user.get("quests", {}).get("points", 0)
@@ -124,7 +122,7 @@ def get_leaderboard():
         })
 
 
-    #  Return the leaderboard
+    
     return jsonify({"leaderboard": leaderboard}), 200
 
 @quest_bp.route("/quests/check/<section>", methods=["POST"])
@@ -139,12 +137,12 @@ def check_quest_section(section):
     quests = user.get("quests", {})
     if isinstance(quests, str):
         import json
-        quests = json.loads(quests)  # convert JSON string to dict
+        quests = json.loads(quests)  
 
     badges = quests.get("badges", [])
     if not isinstance(badges, list):
         badges = []
-    # Quest configuration
+    
     QUEST_CONFIG = {
         "accounts": {"points": 100, "badge_name": "Multi-Account Holder", "description": "You earned 100 points for having multiple accounts", "icon": "Building2"},
         "investments": {"points": 150, "badge_name": "Investment Starter", "description": "You earned 150 points for your first investment", "icon": "TrendingUp"},
@@ -160,7 +158,7 @@ def check_quest_section(section):
 
     completed = False
 
-    # Section checks
+    
     if section == "accounts":
         completed = len(user.get("savings_accounts", [])) > 1 or len(user.get("current_accounts", [])) > 1
     elif section == "investments":
@@ -176,7 +174,7 @@ def check_quest_section(section):
     elif section == "tracking":
         completed = user.get("tracking_count", 0) >= 3
 
-    # Check if quest already completed
+    
     if completed:
         existing_badge = next((b for b in user.get("quests", {}).get("badges", []) if b["name"] == quest_cfg["badge_name"]), None)
         if not existing_badge:
@@ -186,7 +184,7 @@ def check_quest_section(section):
                 "icon": quest_cfg["icon"],
                 "earned_date": datetime.now().isoformat()
             }
-            # Update points and badges
+            
             user.setdefault("quests", {}).setdefault("badges", []).append(badge)
             user["quests"]["points"] = user.get("quests", {}).get("points", 0) + quest_cfg["points"]
 

@@ -33,7 +33,7 @@ def update_user_section():
         if not email:
             return jsonify({"error": "User email required"}), 400
 
-        # Build update fields based on the section
+        
         update_fields = {}
 
         if section == "accounts":
@@ -64,7 +64,7 @@ def update_user_section():
         else:
             return jsonify({"error": "Invalid section"}), 400
 
-        # Perform the update in MongoDB
+        
         result = users_collection.update_one(
             {"email": email},
             {"$set": update_fields}
@@ -73,7 +73,7 @@ def update_user_section():
         if result.modified_count == 0:
             return jsonify({"message": "No changes made or user not found"}), 200
 
-        # Fetch and return the updated document (for confirmation)
+        
         updated_user = users_collection.find_one({"email": email}, {"_id": 0, "password_hash": 0})
 
         return jsonify({

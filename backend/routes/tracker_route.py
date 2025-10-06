@@ -27,7 +27,7 @@ def update_tracker():
     savings = data.get("savings")
     expenditure = data.get("expenditure")
 
-    # Validate fields
+    
     if not email:
         return jsonify({"error": "Email is required"}), 400
     if savings is None or expenditure is None:
@@ -35,12 +35,12 @@ def update_tracker():
     if not isinstance(savings, (int, float)) or not isinstance(expenditure, (int, float)):
         return jsonify({"error": "Savings and expenditure must be numeric"}), 400
 
-    #  Check if user exists
+    
     user = db.users.find_one({"email": email})
     if not user:
         return jsonify({"error": "User not found"}), 404
 
-    #  Append the new month's data
+    
     db.users.update_one(
         {"email": email},
         {
@@ -51,7 +51,7 @@ def update_tracker():
         }
     )
 
-    #  Fetch updated savings and expenditure
+    
     updated_user = db.users.find_one(
         {"email": email},
         {"savings": 1, "expenditure": 1, "_id": 0}
@@ -77,7 +77,7 @@ def get_recent_entries():
     savings = user.get("savings", [])
     expenditure = user.get("expenditure", [])
 
-    # Create month-year labels for last few months (just for display)
+    
     from datetime import datetime
     now = datetime.now()
     months = [
@@ -95,6 +95,6 @@ def get_recent_entries():
             "expenditure": expenditure[index]
         })
 
-    entries = entries[:3]  # last 3 entries
+    entries = entries[:3]  
 
     return jsonify({"entries": entries}), 200

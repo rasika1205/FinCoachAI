@@ -24,19 +24,19 @@ playbook_bp = Blueprint("playbook", __name__)
 @playbook_bp.route("/playbook", methods=["POST"])
 def financial_playbook():
     try:
-        #  Get the logged-in user's email from request (auth middleware ideally)
+        
         data = request.get_json()
         email = data.get("email")
 
         if not email:
             return jsonify({"error": "Email required"}), 400
 
-        #  Fetch user from DB
+        
         user = users_collection.find_one({"email": email}, {"password_hash": 0})
         if not user:
             return jsonify({"error": "User not found"}), 404
 
-        #  Prepare the data summary
+        
         user_summary = {
             "salary": user.get("job", {}).get("salary", 0),
             "savings": sum(user.get("savings", [])),
@@ -48,7 +48,7 @@ def financial_playbook():
             "investments": user.get("investments", []),
         }
 
-        #  Construct prompt for Gemini
+        
         user_query = data.get("query", "How can I retire in 15 years?")
         prompt = f"""
         You are a certified financial advisor helping clients create personalized financial plans.
@@ -74,7 +74,7 @@ def financial_playbook():
         Market insights and recommendations
         """
 
-        #  Get response from Gemini
+        
         response = clientai.models.generate_content(
             model='gemini-2.5-flash',
             contents=[prompt],

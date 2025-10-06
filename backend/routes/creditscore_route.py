@@ -82,7 +82,7 @@ def credit_score():
     
     
     base_preds = np.array([pred_rf, pred_gb])
-    confidence = float(100 - np.std(base_preds))  # simple heuristic
+    confidence = float(100 - np.std(base_preds))  
     confidence = int(round(confidence))
     
     factors_positive = [{"factor": f["feature"], "impact": max(f["shap_value"],0), "description": f"Positive impact of {f['feature']}"} for f in shap_data if f["shap_value"] > 0]
@@ -102,7 +102,7 @@ def credit_score():
         score_range = "Excellent"
 
     historical_trend = [
-        {"month": cs["timestamp"][:7], "score": cs["score"]}  # Using YYYY-MM for x-axis
+        {"month": cs["timestamp"][:7], "score": cs["score"]}  
         for cs in sample_user.get("credit_scores", [])
     ]
     response = {
