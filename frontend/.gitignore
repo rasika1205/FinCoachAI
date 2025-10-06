@@ -1,0 +1,15 @@
+# Node modules
+node_modules/
+
+# Build outputs
+dist/
+*.log
+
+# Environment
+.env
+
+# Ignore specific src folders/files
+/src/components/figma/
+src/Attributes.md
+README.md
+src/guidelines
