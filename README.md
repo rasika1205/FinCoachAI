@@ -229,9 +229,10 @@ http://localhost:5000
 
 ## 🧑‍💻 Author
 
-**👩‍💻 Rasika Gautam**
+**Rasika Gautam**
 *Data Science & AI Enthusiast* | B.Tech MAC, NSUT
 [GitHub](https://github.com/rasika1205)
+
 ---
 
 ## 📜 License
