@@ -44,7 +44,6 @@ The platform provides **secure authentication**, **credit score prediction**, **
 <img width="1883" height="917" alt="Screenshot 2025-10-07 001818" src="https://github.com/user-attachments/assets/014f3c56-de86-4380-bdc2-21a4d1e2a582" />
 <img width="1769" height="889" alt="Screenshot 2025-10-07 001859" src="https://github.com/user-attachments/assets/6f1b46d6-6bb8-46c0-b34b-88abda9689e7" />
 <img width="1784" height="896" alt="Screenshot 2025-10-07 001919" src="https://github.com/user-attachments/assets/49499b6d-e6c6-4ced-8d40-707e6969d5a4" />
-<img width="1746" height="900" alt="Screenshot 2025-10-07 001942" src="https://github.com/user-attachments/assets/233c180b-f389-46ea-9fdb-2541c9d11db9" />
 <img width="1746" height="900" alt="Screenshot 2025-10-07 001942" src="https://github.com/user-attachments/assets/7cad7e1e-dedd-467c-a388-2eab84c5531e" />
 <img width="1608" height="758" alt="Screenshot 2025-10-07 002335" src="https://github.com/user-attachments/assets/87523eea-6509-45f3-9904-afea00cc5686" />
 <img width="1461" height="571" alt="Screenshot 2025-10-07 002356" src="https://github.com/user-attachments/assets/9ebc9b44-4961-4593-9aa2-39d134399dd8" />
@@ -231,16 +230,16 @@ http://localhost:5000
 ## 🧑‍💻 Author
 
 **👩‍💻 Rasika Gautam**
-B.Tech — Mathematics & Computing, NSUT
-Focused on **AI, ML, and Financial Data Science**.
-🔗 [GitHub](https://github.com/rasika1205)
-
+*Data Science & AI Enthusiast* | B.Tech MAC, NSUT
+[GitHub](https://github.com/rasika1205)
 ---
 
 ## 📜 License
 
-This project is licensed under the **MIT License**.
-Feel free to use, modify, and distribute with attribution.
+This project is **proprietary** and protected by copyright © 2025 Rasika Gautam.
+
+You are welcome to view the code for educational or evaluation purposes (e.g., portfolio review by recruiters).  
+However, you may **not copy, modify, redistribute, or claim this project as your own** under any circumstances — including in interviews or job applications — without written permission.
 
 ---
 
