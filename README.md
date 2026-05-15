@@ -19,10 +19,9 @@ The platform provides **secure authentication**, **credit score prediction**, **
 5. [🌐 API Endpoints](#-api-endpoints)
 6. [🔐 Environment Variables](#-environment-variables)
 7. [🚀 Future Enhancements](#-future-enhancements)
-8. [🤝 Contributing](#-contributing)
-9. [🧑‍💻 Author](#-author)
-10. [📜 License](#-license)
-11. [🙏 Acknowledgements](#-acknowledgements)
+8. [🧑‍💻 Author](#-author)
+9. [📜 License](#-license)
+10. [🙏 Acknowledgements](#-acknowledgements)
 
 ---
 
@@ -121,7 +120,6 @@ Create a `.env` file in `/backend`:
 
 ```bash
 FLASK_SECRET_KEY=your_flask_secret
-JWT_SECRET_KEY=your_jwt_secret
 MONGODB_URI=your_mongodb_uri
 GEMINI_API_KEY=your_gemini_api_key
 ```
@@ -203,7 +201,6 @@ http://localhost:5000
 | Variable           | Description                               |
 | ------------------ | ----------------------------------------- |
 | `FLASK_SECRET_KEY` | Secret key for Flask session handling     |
-| `JWT_SECRET_KEY`   | Key for signing JWT authentication tokens |
 | `MONGODB_URI`      | MongoDB connection string                 |
 | `GEMINI_API_KEY`   | Google Gemini API key for AI integration  |
 
